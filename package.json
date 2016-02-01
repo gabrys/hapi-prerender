@@ -1,6 +1,6 @@
 {
   "name": "hapi-prerender",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "hapi middleware for prerendering javascript-rendered pages on the fly for SEO",
   "author": "Lupo Montero",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "seo"
   ],
   "peerDependencies": {
-    "hapi": "8.x.x"
+    "hapi": "^9.0.0"
   },
   "dependencies": {
     "hoek": "^2.4.1",
