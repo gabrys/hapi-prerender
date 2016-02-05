@@ -72,6 +72,11 @@ internals.extensionsToIgnore = [
   '.torrent'
 ];
 
+// @todo put whitelist domain list here
+internals.domainWhitelist = [
+    'assassinscreed.wikia.com'
+];
+
 internals.shouldShowPrerenderedPage = function (req) {
   var userAgent = req.headers['user-agent'];
   var bufferAgent = req.headers['x-bufferbot'];
@@ -89,7 +94,6 @@ internals.shouldShowPrerenderedPage = function (req) {
   var knownBot = internals.crawlerUserAgents.some(function (crawlerUserAgent) {
     return userAgent.toLowerCase().indexOf(crawlerUserAgent.toLowerCase()) !== -1;
   });
-  
   if (knownBot) { isRequestingPrerenderedPage = true; }
 
   //if it is BufferBot...show prerendered page
@@ -102,6 +106,9 @@ internals.shouldShowPrerenderedPage = function (req) {
   });
 
   if (resource) { return false; }
+
+  if (internals.domainWhitelist.indexOf(req.headers.host.toLowerCase()) === -1) { return false; }
+
 
   return isRequestingPrerenderedPage;
 };
@@ -218,7 +225,7 @@ exports.register = function (plugin, options, next) {
       if (!err && cached && typeof cached.body === 'string') {
         return sendResponse(cached);
       }
-    
+
       getPrerenderedPageResponse(req, function (err, resp) {
         if (err) {
           console.error('Error getting prerendered page.');
@@ -246,4 +253,3 @@ exports.register = function (plugin, options, next) {
 exports.register.attributes = {
   pkg: require('./package.json')
 };
-
