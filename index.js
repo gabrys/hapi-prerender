@@ -74,7 +74,18 @@ internals.extensionsToIgnore = [
 
 // @todo put whitelist domain list here
 internals.domainWhitelist = [
-    'assassinscreed.wikia.com'
+    'assassinscreed.wikia.com',
+    'onepiece.wikia.com',
+    'vampirediaries.wikia.com',
+    'gameofthrones.wikia.com',
+    'dragonball.wikia.com',
+    'fairytail.wikia.com',
+    'ja.starwars.wikia.com',
+    'gta.wikia.com',
+    'animalcrossing.wikia.com',
+    'adventuretime.wikia.com',
+    'borderlands.wikia.com',
+    'ttte.wikia.com'
 ];
 
 internals.shouldShowPrerenderedPage = function (req) {
